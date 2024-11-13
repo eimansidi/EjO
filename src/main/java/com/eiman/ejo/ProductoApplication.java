@@ -3,15 +3,16 @@ package com.eiman.ejo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ProductoApplication extends Application {
+public class ProductoApplication extends GridPane {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ProductoApplication.class.getResource("EjO.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(ProductoApplication.class.getResource("fxml/EjO.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
