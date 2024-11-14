@@ -26,40 +26,33 @@ public class Producto extends GridPane {
     private ImageView imagenProductoImageView;
 
     /**
-     * Constructor de la clase
+     * Constructor de la clase.
      */
     public Producto() {
-        FXMLLoader fxmlLoader = new FXMLLoader(Producto.class.getResource("/fxml/EjO.fxml"));
-        fxmlLoader.setController(this); // Establece el controlador actual
-        fxmlLoader.setRoot(this); // Asocia este nodo como el root del FXML
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/EjO.fxml"));
+        fxmlLoader.setRoot(this); // Define esta clase como raíz
+        fxmlLoader.setController(this); // Establece este como el controlador
         try {
             fxmlLoader.load(); // Carga el archivo FXML
         } catch (IOException e) {
-            throw new RuntimeException("Error al cargar el archivo FXML", e);
+            throw new RuntimeException("Error al cargar el archivo FXML de Producto", e);
         }
     }
 
     /**
      * Establece la cantidad de stock del producto.
-     * Actualiza el color de fondo en funcion de los niveles de stock:
-     * - Verde para mas de 100
-     * - Azul para entre 20 y 100
-     * - Rojo para menos de 20
      *
      * @param cantidad La cantidad de stock.
      */
     public void setStock(double cantidad) {
-        // Determina el color de fondo segun los niveles de stock
         String style;
         if (cantidad > 100) {
-            style = "verde"; // Verde para alto stock
+            style = "verde";
         } else if (cantidad > 20) {
-            style = "azul"; // Azul para stock medio
+            style = "azul";
         } else {
-            style = "rojo"; // Rojo para bajo stock
+            style = "rojo";
         }
-
-        // Actualiza el texto del stock y el estilo de fondo del contenedor
         stockProductoLabel.setText(String.valueOf(cantidad));
         this.getStyleClass().clear();
         this.getStyleClass().add(style);
@@ -71,7 +64,7 @@ public class Producto extends GridPane {
      * @param nombre El nombre del producto.
      */
     public void setName(String nombre) {
-        nombreProductoLabel.setText(nombre); // Actualiza la etiqueta del nombre
+        nombreProductoLabel.setText(nombre);
     }
 
     /**
@@ -80,6 +73,6 @@ public class Producto extends GridPane {
      * @param imagen La imagen del producto.
      */
     public void setImage(Image imagen) {
-        imagenProductoImageView.setImage(imagen); // Establece la imagen en el ImageView
+        imagenProductoImageView.setImage(imagen);
     }
 }
